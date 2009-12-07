@@ -94,4 +94,43 @@ if (!gadgets.util) {
     };
 }
 
+if (!gadgets.io) {
+    gadgets.io = {
 
+        registerOnLoadHandler : function(fn) {
+            //callback immediately
+            fn()
+
+        },
+
+        makeRequest : function(url, callback, params) {
+
+            if(window.console) {
+                console.info(url)
+            }
+            $.get(url, callback)
+        }
+
+    };
+}
+
+if (!gadgets.io.RequestParameters) {
+    gadgets.io.RequestParameters = {
+
+       CONTENT_TYPE : "", METHOD : ""
+    }
+}
+
+if (!gadgets.io.ContentType) {
+    gadgets.io.ContentType = {
+
+       JSON : ""
+    }
+}
+
+if (!gadgets.io.MethodType) {
+    gadgets.io.MethodType = {
+
+       GET : ""
+    }
+}
