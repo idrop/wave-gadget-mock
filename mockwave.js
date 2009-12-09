@@ -18,17 +18,16 @@ function Wave() {
         return list
     }
 
-
     this.isInWaveContainer = function() {
         return true
     };
 
     this.getHost = function() {
-        return new Participant("1", "Phil Miller", "pic_url")
+        return new Participant("123456", "Phil Miller", "pic_url")
     };
 
     this.getViewer = function() {
-        return new Participant("1", "Phil Miller", "pic_url")
+        return new Participant("123456", "Phil Miller", "pic_url")
     };
 
     this.getState = function() {
@@ -38,7 +37,6 @@ function Wave() {
     this.setStateCallback = function(fn) {
 
     };
-
 
     this.setParticipantCallback = function(fn) {
 
@@ -80,7 +78,7 @@ function State() {
 
     this.submitDelta = function(obj) {
         for (prop in obj) {
-            if(obj.hasOwnProperty(prop)) {
+            if (obj.hasOwnProperty(prop)) {
                 state[prop] = obj[prop]
             }
         }
@@ -131,9 +129,6 @@ if (!gadgets.io) {
                 callback(json)
             })
         }
-
-
-
     };
 }
 
