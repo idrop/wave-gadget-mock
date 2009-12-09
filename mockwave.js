@@ -1,5 +1,5 @@
 if (!window.wave) {
-    wave = new Wave()
+    var wave = new Wave()
 }
 
 /**
@@ -45,7 +45,7 @@ function Wave() {
 }
 
 /**
- * participant object
+ * Participant object
  */
 function Participant(id, name, pic) {
     this.id = id;
@@ -57,6 +57,10 @@ function Participant(id, name, pic) {
     }
 
     this.getName = function() {
+        return name
+    }
+
+    this.getDisplayName = function() {
         return name
     }
 }
@@ -105,11 +109,17 @@ if (!gadgets.io) {
 
         makeRequest : function(url, callback, params) {
 
-            if(window.console) {
+            if (window.console) {
                 console.info(url)
             }
-            $.get(url, callback)
+            $.get(url, function(obj) {
+                var json = new Object()
+                json.data = JSON.parse(obj) // add property 'data' to this obj
+                callback(json)
+            })
         }
+
+
 
     };
 }
@@ -117,20 +127,20 @@ if (!gadgets.io) {
 if (!gadgets.io.RequestParameters) {
     gadgets.io.RequestParameters = {
 
-       CONTENT_TYPE : "", METHOD : ""
+        CONTENT_TYPE : "", METHOD : ""
     }
 }
 
 if (!gadgets.io.ContentType) {
     gadgets.io.ContentType = {
 
-       JSON : ""
+        JSON : ""
     }
 }
 
 if (!gadgets.io.MethodType) {
     gadgets.io.MethodType = {
 
-       GET : ""
+        GET : ""
     }
 }
