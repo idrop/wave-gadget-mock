@@ -1,0 +1,12 @@
+mockwave.js is designed to mock some of google wave's functionality, modelling a wave's state and participants for instance.
+
+It also mocks google's gadget api.
+
+To use this library, first transform your wave.xml file into an equivilant html file. Then import jquery, json.js and mockwave.js into the html file.
+
+This js file is dependent on jQuery for ajax gets, and to json.js for json marshalling.
+
+It's still very rough around the edges, but hey, it works for me - I can do 'offline' google wave development.
+
+Have fun,
+Phil.
