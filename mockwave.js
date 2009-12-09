@@ -7,12 +7,14 @@ if (!window.wave) {
  */
 function Wave() {
 
+    var state = new State()
+
     this.getParticipants = function() {
         var list = new Array()
-        list[0] = new Participant("1", "Phil Miller", "pic_url")
-        list[1] = new Participant("2", "Dank Spangle", "pic_url")
-        list[2] = new Participant("3", "Warren Miller", "pic_url")
-        list[3] = new Participant("4", "Julie Woodall", "pic_url")
+        list[0] = new Participant("123456", "Phil Miller", "pic_url")
+        list[1] = new Participant("234567", "Dank Spangle", "pic_url")
+        list[2] = new Participant("345678", "Warren Miller", "pic_url")
+        list[3] = new Participant("456789", "Julie Woodall", "pic_url")
         return list
     }
 
@@ -30,7 +32,7 @@ function Wave() {
     };
 
     this.getState = function() {
-        return new State()
+        return state
     };
 
     this.setStateCallback = function(fn) {
@@ -77,8 +79,10 @@ function State() {
     };
 
     this.submitDelta = function(obj) {
-        for (var i = 0; i < obj.length; i++) {
-            state[i] = obj[i]
+        for (prop in obj) {
+            if(obj.hasOwnProperty(prop)) {
+                state[prop] = obj[prop]
+            }
         }
     };
 }
@@ -94,6 +98,15 @@ if (!gadgets.util) {
             //callback immediately
             fn()
 
+        }
+    };
+}
+
+
+if (!gadgets.json) {
+    gadgets.json = {
+        parse : function(str) {
+            return JSON.parse(str)
         }
     };
 }
